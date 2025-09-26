@@ -1,8 +1,8 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Ứng dụng Pomodoro đơn giản xây dựng bằng [Next.js](https://nextjs.org).
 
-## Getting Started
+## Chạy dự án
 
-First, run the development server:
+Chạy máy chủ phát triển:
 
 ```bash
 npm run dev
@@ -14,11 +14,24 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mở [http://localhost:3000](http://localhost:3000) trên trình duyệt để sử dụng.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Bạn có thể sửa giao diện hoặc logic trong `src/components/PomodoroTimer.tsx` hoặc trang `src/app/page.tsx`. Trang sẽ tự động cập nhật khi lưu file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Project sử dụng [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) để tối ưu phông chữ [Geist](https://vercel.com/font).
+
+## Tính năng
+
+- Hẹn giờ Pomodoro với các pha: Làm việc, Nghỉ ngắn, Nghỉ dài
+- Tự động chuyển pha, có tuỳ chọn tự động bắt đầu pha tiếp theo
+- Tuỳ chỉnh thời lượng và số phiên trước khi nghỉ dài
+- Lưu cài đặt vào LocalStorage
+- Thông báo trình duyệt và âm báo ngắn khi kết thúc phiên
+
+## Ghi chú
+
+- Bạn có thể bật thông báo của trình duyệt khi được hỏi hoặc trong phần “Bật thông báo trình duyệt”.
+- Nếu âm thanh không phát, hãy nhấn nút Bắt đầu để kích hoạt audio (trình duyệt yêu cầu tương tác người dùng).
 
 ## Learn More
 
