@@ -1,5 +1,10 @@
 Pomodoro web app built with [Next.js](https://nextjs.org) (App Router) and TypeScript.
 
+## Demo
+
+- Vietnamese: https://pomodoro-web-fawn.vercel.app/vi
+- English: https://pomodoro-web-fawn.vercel.app/en
+
 ## Features
 
 - Pomodoro timer with phases: Work, Short Break, Long Break
@@ -70,6 +75,7 @@ npm run start
 ## Deploy
 
 - Works well on Vercel. Any Node host that supports Next.js App Router is fine.
+- Live: https://pomodoro-web-fawn.vercel.app
 
 ## License
 
