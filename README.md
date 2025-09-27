@@ -1,49 +1,76 @@
-Ứng dụng Pomodoro đơn giản xây dựng bằng [Next.js](https://nextjs.org).
+Pomodoro web app built with [Next.js](https://nextjs.org) (App Router) and TypeScript.
 
-## Chạy dự án
+## Features
 
-Chạy máy chủ phát triển:
+- Pomodoro timer with phases: Work, Short Break, Long Break
+- Auto transition and optional auto-start next phase
+- Custom durations and cycles before a long break
+- LocalStorage persistence for settings, timer state, tasks, inbox, stats
+- Browser notifications and end-of-session alert sound (customizable)
+- i18n with routes: Vietnamese and English (`/vi`, `/en`)
+- Task List: add/select/complete/delete; auto-complete active task at end of work session
+- Inbox (distraction capture): quick add via I hotkey; shown only during breaks
+- Achievements & Stats: no-pause streak, early tasks, minutes and “km flown” metric
+- Review: simple 28-day heatmap of focused minutes
+- Ambient sound: brown noise, toggle and volume, plays during work (requires user gesture)
+- Journey/Flight visualization: a fun plane progress bar and optional gallery/video
+
+## Screens and panels
+
+- PomodoroTimer (`src/components/PomodoroTimer.tsx`): core timer, settings, alerts
+- TaskList (`src/components/TaskList.tsx`): manage tasks, set active task
+- FocusBoard (`src/components/FocusBoard.tsx`): composes timer + panels
+- InboxPanel (`src/components/InboxPanel.tsx`): distraction inbox (I hotkey)
+- AchievementsPanel (`src/components/AchievementsPanel.tsx`): badges + distance
+- ReviewPanel (`src/components/ReviewPanel.tsx`): 28-day heatmap
+- AmbientSound (`src/components/AmbientSound.tsx`): brown noise control
+- FlightProgress (`src/components/FlightProgress.tsx`): journey media and plane
+
+## i18n
+
+- Dictionaries at `src/i18n/dictionaries.ts`
+- Provider and hook at `src/i18n/I18nProvider.tsx`
+- Locale routes in `src/app/[lang]/page.tsx` (`/vi` default)
+
+## Settings (Timer)
+
+- Work/Short/Long durations, cycles before long break
+- Auto-start next phase toggle
+- Alerts: enable/disable, sound type (Beep/Ding/Chime/Pop), volume, and Test button
+
+## Optional media (Journey panel)
+
+- Images: place any of `.jpg/.jpeg/.png/.webp/.gif` into `public/journey/`
+- Video: add `public/flight.mp4`
+- The app lists available media via `/api/journey` and renders only what exists (no 404 spam)
+
+## Development
+
+Start the dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Mở [http://localhost:3000](http://localhost:3000) trên trình duyệt để sử dụng.
+Open http://localhost:3000 and navigate to `/vi` or `/en`.
 
-Bạn có thể sửa giao diện hoặc logic trong `src/components/PomodoroTimer.tsx` hoặc trang `src/app/page.tsx`. Trang sẽ tự động cập nhật khi lưu file.
+Edit components in `src/components/*`; the page will hot-reload.
 
-Project sử dụng [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) để tối ưu phông chữ [Geist](https://vercel.com/font).
+Notes:
+- Some browser features (Notifications, Web Audio, Vibrate) require user interaction and/or permission.
+- If the alert sound doesn’t play, click Start once to unlock audio.
 
-## Tính năng
+## Build
 
-- Hẹn giờ Pomodoro với các pha: Làm việc, Nghỉ ngắn, Nghỉ dài
-- Tự động chuyển pha, có tuỳ chọn tự động bắt đầu pha tiếp theo
-- Tuỳ chỉnh thời lượng và số phiên trước khi nghỉ dài
-- Lưu cài đặt vào LocalStorage
-- Thông báo trình duyệt và âm báo ngắn khi kết thúc phiên
+```bash
+npm run build
+npm run start
+```
 
-## Ghi chú
+## Deploy
 
-- Bạn có thể bật thông báo của trình duyệt khi được hỏi hoặc trong phần “Bật thông báo trình duyệt”.
-- Nếu âm thanh không phát, hãy nhấn nút Bắt đầu để kích hoạt audio (trình duyệt yêu cầu tương tác người dùng).
+- Works well on Vercel. Any Node host that supports Next.js App Router is fine.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT (see LICENSE if added). Contributions welcome.
