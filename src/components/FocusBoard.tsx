@@ -9,6 +9,11 @@ import AchievementsPanel, { type Achievements } from "./AchievementsPanel";
 import ReviewPanel, { type DailyStat } from "./ReviewPanel";
 import AmbientSound from "./AmbientSound";
 import FlightProgress from "./FlightProgress";
+import BackgroundPicker from "./BackgroundPicker";
+import GameModePanel from "./GameModePanel";
+import { useGameMode } from "../state/gameMode";
+import CharacterPanel from "./CharacterPanel";
+import { useCharacter } from "../state/character";
 
 type BoardState = {
   tasks: Task[];
@@ -44,6 +49,8 @@ export default function FocusBoard() {
   });
 
   const [currentPhase, setCurrentPhase] = useState<"work" | "short" | "long">("work");
+  const { award } = useGameMode();
+  const { addXP } = useCharacter();
 
   const addTask = useCallback((title: string) => {
     const t: Task = { id: crypto.randomUUID(), title, completed: false };
@@ -89,7 +96,12 @@ export default function FocusBoard() {
       distanceKm: stats.distanceKm + minutes * 0.2,
       daily: { ...stats.daily, [dateKey]: (stats.daily[dateKey] ?? 0) + minutes },
     });
-  }, [stats, setStats]);
+    // Award game points if enabled
+    award({ minutes, paused: meta.paused });
+    // Add XP to character (e.g., 5 XP per planned minute, more if not paused)
+    const xpGain = minutes * (meta.paused ? 3 : 5);
+    addXP(xpGain);
+  }, [stats, setStats, award, addXP]);
 
   // Hotkey I to quick add to inbox
   useEffect(() => {
@@ -134,6 +146,9 @@ export default function FocusBoard() {
         <FlightProgress km={stats.distanceKm} />
       </div>
       <div className="flex flex-col gap-8">
+        <BackgroundPicker />
+        <GameModePanel />
+        <CharacterPanel />
         <TaskList
           tasks={board.tasks}
           activeId={board.activeId}

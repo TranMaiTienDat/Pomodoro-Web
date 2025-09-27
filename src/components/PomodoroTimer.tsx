@@ -283,7 +283,7 @@ export default function PomodoroTimer({ onWorkSessionComplete, onPhaseChange }: 
   const playAlert = useCallback(() => {
     if (!settings.soundOn) return;
     try {
-      const AudioCtor = (window as any).AudioContext ?? (window as any).webkitAudioContext;
+      const AudioCtor = window.AudioContext ?? window.webkitAudioContext;
       if (!AudioCtor) return;
       if (!audioCtxRef.current) audioCtxRef.current = new AudioCtor();
       const ctx = audioCtxRef.current as AudioContext;
@@ -369,7 +369,7 @@ export default function PomodoroTimer({ onWorkSessionComplete, onPhaseChange }: 
         return updated;
       }
     });
-  }, [setState, settings.autoStartNext, settings.cyclesBeforeLongBreak, settings.longBreakMinutes, settings.shortBreakMinutes, settings.workMinutes, onPhaseChange]);
+  }, [setState, settings.autoStartNext, settings.cyclesBeforeLongBreak, settings.longBreakMinutes, settings.shortBreakMinutes, settings.workMinutes]);
 
   // Notify parent about phase changes without mutating state during render
   useEffect(() => {

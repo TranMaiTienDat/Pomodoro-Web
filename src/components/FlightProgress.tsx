@@ -77,10 +77,9 @@ export default function FlightProgress({ km }: { km: number }) {
           </div>
         ) : null}
 
-        {/* Images */}
-        <div className="rounded-lg overflow-hidden border border-black/10 dark:border-white/10">
-          <div className="px-3 py-2 text-sm opacity-70 border-b border-black/10 dark:border-white/10">Gallery</div>
-          {availableImages && availableImages.length > 0 ? (
+        {/* Images: only show when available */}
+        {availableImages && availableImages.length > 0 ? (
+          <div className="rounded-lg overflow-hidden border border-black/10 dark:border-white/10">
             <div className="grid grid-cols-3 gap-2 p-2">
               {availableImages.map((src) => (
                 <img
@@ -91,10 +90,8 @@ export default function FlightProgress({ km }: { km: number }) {
                 />
               ))}
             </div>
-          ) : (
-            <div className="p-4 text-sm opacity-70">{dict.journey.mediaHint}</div>
-          )}
-        </div>
+          </div>
+        ) : null}
       </div>
     </section>
   );

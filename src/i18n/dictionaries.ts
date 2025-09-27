@@ -59,6 +59,42 @@ export type Dictionary = {
     mediaHint: string;
     videoTitle: string;
   };
+  background: {
+    title: string;
+    colorOption: string;
+    imageOption: string;
+    color: string;
+    upload: string;
+    clear: string;
+    urlPlaceholder: string;
+    autoContrast: string;
+    textColor: string;
+    overlay: string;
+  };
+  game: {
+    title: string;
+    enable: string;
+    difficulty: string;
+    easy: string;
+    normal: string;
+    hard: string;
+    score: string;
+    best: string;
+    streak: string;
+    rules: string;
+    resetScore: string;
+  };
+  character: {
+    title: string;
+    level: string;
+    xp: string;
+    power: string;
+    upgrade: string;
+    hat: string;
+    cape: string;
+    buy: string;
+    notEnough: string;
+  };
 };
 
 export const dictionaries: Record<Locale, Dictionary> = {
@@ -127,6 +163,42 @@ export const dictionaries: Record<Locale, Dictionary> = {
       mediaHint: "Optional: add /public/journey images (1.jpg, 2.jpg, ...) or /public/flight.mp4 to visualize your flight.",
       videoTitle: "Flight video",
     },
+    background: {
+      title: "Background",
+      colorOption: "Color",
+      imageOption: "Image",
+      color: "Color",
+      upload: "Upload image",
+      clear: "Clear",
+      urlPlaceholder: "https://example.com/wallpaper.jpg",
+      autoContrast: "Auto text contrast",
+      textColor: "Text color",
+      overlay: "Overlay",
+    },
+    game: {
+      title: "Game Mode",
+      enable: "Enable game mode",
+      difficulty: "Difficulty",
+      easy: "Easy",
+      normal: "Normal",
+      hard: "Hard",
+      score: "Score",
+      best: "Best",
+      streak: "Streak",
+      rules: "Earn points when you finish a work session. No pause increases streak and multiplier.",
+      resetScore: "Reset score",
+    },
+    character: {
+      title: "Character",
+      level: "Level",
+      xp: "XP",
+      power: "Power",
+      upgrade: "Upgrade",
+      hat: "Hat",
+      cape: "Cape",
+      buy: "Buy",
+      notEnough: "Not enough points",
+    },
   },
   vi: {
     appTitle: "Pomodoro",
@@ -192,6 +264,42 @@ export const dictionaries: Record<Locale, Dictionary> = {
       stage: "Chặng",
       mediaHint: "Tuỳ chọn: thêm ảnh vào /public/journey (1.jpg, 2.jpg, ...) hoặc video /public/flight.mp4 để trực quan hoá chuyến bay.",
       videoTitle: "Video chuyến bay",
+    },
+    background: {
+      title: "Hình nền",
+      colorOption: "Màu sắc",
+      imageOption: "Hình ảnh",
+      color: "Màu",
+      upload: "Tải hình lên",
+      clear: "Xoá hình",
+      urlPlaceholder: "https://ví-dụ.vn/hinh-nen.jpg",
+      autoContrast: "Tự động chọn màu chữ",
+      textColor: "Màu chữ",
+      overlay: "Lớp phủ",
+    },
+    game: {
+      title: "Chế độ game",
+      enable: "Bật chế độ game",
+      difficulty: "Độ khó",
+      easy: "Dễ",
+      normal: "Thường",
+      hard: "Khó",
+      score: "Điểm",
+      best: "Kỷ lục",
+      streak: "Chuỗi",
+      rules: "Hoàn thành một phiên làm việc để nhận điểm. Không tạm dừng sẽ tăng chuỗi và hệ số.",
+      resetScore: "Xoá điểm",
+    },
+    character: {
+      title: "Nhân vật",
+      level: "Cấp",
+      xp: "Điểm kinh nghiệm",
+      power: "Sức mạnh",
+      upgrade: "Nâng cấp",
+      hat: "Mũ",
+      cape: "Áo choàng",
+      buy: "Mua",
+      notEnough: "Không đủ điểm",
     },
   },
 };

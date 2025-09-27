@@ -3,6 +3,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useI18n } from "../i18n/I18nProvider";
 
+declare global {
+  interface Window {
+    webkitAudioContext?: typeof AudioContext;
+  }
+}
+
 export default function AmbientSound({ playing }: { playing: boolean }) {
   const { dict } = useI18n();
   const [enabled, setEnabled] = useState(false);
@@ -16,7 +22,7 @@ export default function AmbientSound({ playing }: { playing: boolean }) {
       gainRef.current?.gain.setTargetAtTime(0, audioCtxRef.current?.currentTime ?? 0, 0.2);
       return;
     }
-    const AudioCtor = window.AudioContext ?? (window as any).webkitAudioContext;
+    const AudioCtor = window.AudioContext ?? window.webkitAudioContext;
     if (!AudioCtor) return;
     if (!audioCtxRef.current) audioCtxRef.current = new AudioCtor();
     const ctx = audioCtxRef.current;
@@ -42,14 +48,14 @@ export default function AmbientSound({ playing }: { playing: boolean }) {
     source.start(0);
     noiseRef.current = source;
 
-    gainRef.current.gain.setTargetAtTime(volume, ctx.currentTime, 0.2);
+  gainRef.current.gain.setTargetAtTime(volume, ctx.currentTime, 0.2);
 
     return () => {
       try { source.stop(); } catch {}
       source.disconnect();
       if (noiseRef.current === source) noiseRef.current = null;
     };
-  }, [enabled, playing]);
+  }, [enabled, playing, volume]);
 
   useEffect(() => {
     if (!gainRef.current || !audioCtxRef.current) return;
